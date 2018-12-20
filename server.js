@@ -3,7 +3,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = 3000;
+// configured with heroku port
+const port = process.env.PORT || 3000;
 var app = express();
 
 // partials are functions that run
@@ -25,9 +26,9 @@ app.use( (req, res, next)=> {
 });
 
 // middleware for maintenance
-app.use ( (req, res, next) => {
-    res.render('maintenance.hbs');
-})
+// app.use ( (req, res, next) => {
+//     res.render('maintenance.hbs');
+// })
 
 ///localhost:3000/public/help.html'
 app.use(express.static(__dirname + '/public'));
@@ -80,5 +81,5 @@ app.get('/bad', (req, res) => {
 
 // binds the app to a port; specifying port 3000
 app.listen(port, () => {
-    console.log('Server is up on port:3000')
+    console.log(`Server is up on port:${port}`)
 });
