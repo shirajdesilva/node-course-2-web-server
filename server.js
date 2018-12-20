@@ -68,6 +68,11 @@ app.get('/about', (req, res) => {
     });
 })
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Portfolio',
+    });
+})
 
 var request_errror_json = {
     code: 400,
